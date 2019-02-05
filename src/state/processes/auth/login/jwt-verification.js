@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import jwt from 'jsonwebtoken'
 import { Redirect, withRouter } from 'react-router-dom'
 
-import * as loginActions from '.actions'
+import * as loginActions from './actions'
 import connected from '../../../setup/connect'
-import { selector as users } from '../../../entities/users/reducer'
+import { selector as users } from '../../../entities/users/reducers'
 import authToken from '../../../../utilities/local-storage'
 import { unsecuredRoutes } from '../../../../ui'
 
-const AutoLoginOrRedirect = wrappedComponent => {
+const AutoLoginOrRedirect = WrappedComponent => {
   class JWTVerify extends Component {
     constructor(props) {
       super(props)

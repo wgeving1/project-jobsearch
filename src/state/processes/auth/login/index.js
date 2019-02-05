@@ -1,8 +1,8 @@
 import LoginProcess from './login-process'
-import AutoLoginOrRedirect from './jwt-verification'
+import JWTVerify from './jwt-verification'
 
 export const Login = LoginProcess
-export const AutoLoginOrRedirect = AutoLoginOrRedirectProcess
+export const AutoLoginOrRedirect = JWTVerify
 
 export default {
   Login, 

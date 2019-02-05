@@ -8,7 +8,7 @@ import Footer from '../components/footer'
 // Secure Pages
 import Landing from './secure/landing'
 import Profile from './secure/profile'
-import SignOut from './sign-out'
+import SignOut from './secure/sign-out'
 
 // 404 Page
 import BadRequest from './unsecure/bad-request/'

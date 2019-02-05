@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as loginActions from './actions'
-import connected from '../../setup/connect'
+import connected from '../../../setup/connect'
 
 export const loginWrapper = WrappedComponent => {
   class LoginProcess extends Component {

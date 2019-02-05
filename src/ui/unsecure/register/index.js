@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Icon, Input } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
-import connected from 
+import connected from '../../../state/setup/connect'
 import { Page, Content, Form, Row } from './styles'
-import * as registerActions from 
-import { selector as users } from
+import * as registerActions from '../../../state/processes/register/actions'
+import { selector as users } from '../../../state/entities/users/reducers'
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class CreateAccount extends Component {
       this.setState({ registered: true })
     }
   }
-  handleInput = (e) => {
+  handleInput = (field) => event => {
     this.setState({ [field]: event.target.value })
   }
   handleSubmit = (e) => {
@@ -69,3 +69,5 @@ class CreateAccount extends Component {
     )
   }
 }
+
+export default (connected([users], [registerActions])(CreateAccount))

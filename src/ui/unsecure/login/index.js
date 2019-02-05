@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Icon, Input } from 'semantic-ui-react'
+import { Button, Icon, ButtonContent, Input } from 'semantic-ui-react'
 import { Page, Content, Title, Description, Form } from './styles'
-import { Login, AutoLoginOrRedirect } from 
+import { Login, AutoLoginOrRedirect } from '../../../state/processes/auth/login'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -11,9 +11,6 @@ class LoginPage extends Component {
       email: '',
       password: ''
     }
-    this.handleInputEmail = this.handleInputEmail.bind(this);
-    this.handleInputPassword = this.handleInputPassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleInputEmail = (event) => {
     event.preventDefault()
@@ -41,10 +38,11 @@ class LoginPage extends Component {
             <Input icon="user secret" iconPosition="left" size="big" placeholder="Your Password" type="password"
               value={this.state.password} onChange={this.handleInputPassword} />
             <Button type="submit" animated color="green">
-              <Button.Content visible>Login</Button.Content>
-              <Button.Content hidden>
+              <ButtonContent visible>Login</ButtonContent>
+              <ButtonContent hidden>
                 <Icon name="caret square right" />
-              </Button.Content>
+              </ButtonContent>
+            </Button>  
           </Form>
           <Link to="/forgot-password">Forgot Password?</Link>
         </Content>
@@ -52,3 +50,5 @@ class LoginPage extends Component {
     )
   }
 }
+
+export default Login(AutoLoginOrRedirect(LoginPage))

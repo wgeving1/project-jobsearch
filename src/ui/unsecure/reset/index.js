@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 // import * as process from './process
-// import connected from 
+import connected from '../../../state/setup/connect'
 import styles from './styles'
 
 class CreateAccount extends Component {
