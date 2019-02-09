@@ -40,6 +40,7 @@ class Recover extends Component {
               </ButtonContent>
             </Button>
           </Form>
+            {this.state.error ? <Error>Please provide an email</Error> : null}
         </Content>
       </Page>
     )

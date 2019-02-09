@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom'
 import connected from '../../state/setup/connect'
 import { selector as users } from '../../state/entities/users/reducers'
 import UserLinks from './user-links'
-import DefaultLinks from './nav-links'
+import HeaderDefaultLinks from './nav-links'
 
 import {
   ActiveLink,
@@ -33,7 +33,7 @@ class Header extends Component {
             </LogoContainer>
         </Link>
         <ActiveLink>
-          {user.userHandle ? <UserLinks /> : <DefaultLinks />}
+          {user.userHandle ? <UserLinks /> : <HeaderDefaultLinks />}
         </ActiveLink>
       </HeaderContainer>
     )

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 // import * as process from './process
 import connected from '../../../state/setup/connect'
-import styles from './styles'
+import { Page, Content, Title, Description } from './styles'
 
-class CreateAccount extends Component {
+class Reset extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -28,17 +28,17 @@ class CreateAccount extends Component {
 
   render() {
     return (
-      <div styleName="page">
-        <div styleName="Content">
-          <div styleName="Title">Check Your Email</div>
-          <div styleName="Description">
+      <Page>
+        <Content>
+          <Title>Check Your Email</Title>
+          <Description>
             <div>An email has been sent to the address you entered!</div>
             <div>Follow the instructions to login.</div>
-          </div>
-        </div>
-      </div>
+          </Description>
+        </Content>
+      </Page>
     )
   }
 }
 
-export default withRouter(connected([], [])(CreateAccount))
+export default withRouter(connected([], [])(Reset))

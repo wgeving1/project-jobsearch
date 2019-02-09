@@ -45,7 +45,7 @@ class App extends Component {
             <Route exact path="/forgot-password" component={Recover} />,
             <Route exact path="/faqs" component={FAQs} />,
             <Route exact path="/contact-us" component={ContactUs} />,
-
+            <Route exact path="/reset" component={Reset}/>,
             <Route exact path="/sign-out" component={SignOut} />,
             <Route path="/landing" component={Landing} />,
             <Route exact path="/profile" component={Profile} />,
