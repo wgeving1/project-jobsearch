@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import store from './store'
+import store from './configureStore'
 
 function toSelectors(selectors) {
   return function mapStateToProps(state) {

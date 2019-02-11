@@ -14,6 +14,7 @@ export function registerUser({ email,
     type: TYPES.REGISTER_USER_REQUEST,
     email, 
     username, 
+    password,
     confirmedPassword, 
     firstName, 
     surname
