@@ -3,9 +3,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import App from './ui/index'
+import App from './ui'
 import configureStore from './state/setup/configureStore'
-import * as serviceWorker from './serviceWorker'
+import * as serviceWorker from '../../serviceWorker'
 
 const store = configureStore()
 
