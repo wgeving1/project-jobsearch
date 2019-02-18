@@ -22,7 +22,8 @@ class Header extends Component {
   }
 
   render() {
-    const user = this.props.users.active
+
+    const user = users.active
     const logoLink = user && user.userHandle ? '/landing' : '/'
 
     return (
