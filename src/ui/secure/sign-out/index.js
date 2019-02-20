@@ -9,7 +9,7 @@ class SignOut extends Component {
     this.props.logoutActions.logoutUser()
   }
   render() {
-    const user = users.active
+    const user = this.props.users.active
 
     if(!user || typeof user.userHandle === 'undefined')
       return <Redirect to={{ pathname: '/', state: { from: this.props.location } }} />

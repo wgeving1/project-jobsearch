@@ -12,7 +12,7 @@ const options = [
 
 class HeaderNavLinks extends Component {
   render() {
-    const user = users.active
+    const user = this.props.users.active
     const trigger = (
       <span>
         <Image avatar src={`${user.surname}`} >
