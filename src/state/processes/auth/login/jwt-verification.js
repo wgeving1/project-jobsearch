@@ -4,7 +4,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 
 import * as loginActions from './actions'
 import connected from '../../../setup/connect'
-import { selector as users } from '../../../entities/users/reducers'
+import { selector as users } from '../../../../state/entities/users/reducers'
 import authToken from '../../../../utilities/local-storage'
 import { unsecuredRoutes } from '../../../../ui'
 
@@ -14,7 +14,7 @@ const AutoLoginOrRedirect = WrappedComponent => {
       super(props)
       this.state = {
         fetching: true, 
-        loaded: false
+        loading: false
       }
     }
     componentDidMount() {
@@ -25,23 +25,23 @@ const AutoLoginOrRedirect = WrappedComponent => {
         const currentTime = (new Date().getTime()) / 1000
         if(decoded.exp < currentTime) {
           authToken.remove()
-          this.setState({ fetching: false,loaded: true })
+          this.setState({ fetching: false,loading: true })
         } else {
           this.props.loginActions.fetchUserByJWT()
         }
       } else {
-        this.setState({ fetching: false, loaded: true })
+        this.setState({ fetching: false, loading: true })
       }  
     }
     componentWillReceiveProps(nextProps) {
       if(this.state.fetching && !nextProps.users.loading) {
-        this.setState({ fetching: false, loaded: true })
+        this.setState({ fetching: false, loading: true })
       }
     }
     render() {
       const user = this.props.users.active
 
-      if (this.state.loaded) {
+      if (this.state.loading) {
         const { pathname } = this.props.location
         const unsecured = unsecuredRoutes.indexOf(pathname) > -1
         const { history, location, loginActions, match, users, staticContext, ...originalProps } = this.props

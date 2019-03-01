@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import users from '../entities/users/reducers'
+import { selector as users } from '../../state/entities/users/reducers'
 import LOGOUT_TYPES from '../processes/auth/logout/types'
 
 const appReducer = combineReducers({

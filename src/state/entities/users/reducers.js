@@ -6,7 +6,7 @@ export const initialState = {
   active: {
     admin: false
   }, 
-  entities: [],
+  // entities: [],
   loading: false
 }
 

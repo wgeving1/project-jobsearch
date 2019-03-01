@@ -6,7 +6,7 @@ import { selector as users } from '../../../entities/users/reducers'
 
 export const recoverProcess = WrappedComponent => {
   class Login extends Component {
-    handleClick = (email, password) => {
+    handleClick = (email) => {
       this.props.userAuthActions.recover(email)
     }
     render() {
