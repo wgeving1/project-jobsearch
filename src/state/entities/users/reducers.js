@@ -1,6 +1,6 @@
 import LOGIN_TYPES from '../../processes/auth/login/types'
 import REGISTER_TYPES from '../../processes/register/types'
-import RECOVER_TYPES from '../../processes/auth/recover'
+import RECOVER_TYPES from '../../processes/auth/recover/types'
 
 export const initialState = {
   active: {
@@ -15,7 +15,7 @@ const fetchingUserData = (state) => ({
   loading: true
 })
 
-const loginUser = (state, { admin, user }) => ({
+const loginUser = (state, { user, admin }) => ({
   ...state, 
   loading: false, 
   active: {
@@ -44,7 +44,7 @@ export default function(state = initialState, action = {}) {
   return handlers[action.type] ? handlers[action.type](state, action) : state
 }
 
-export const selector ={
+export const selector = {
   name: 'users', 
   select(state) {
     return state.users
