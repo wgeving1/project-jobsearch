@@ -1,6 +1,6 @@
 import axios from 'axios'
 import authToken from './local-storage'
-// import { format } from 'url';
+// import { format } from 'url'
 
 const CANONICAL_URL_REGEX = /^[^:]+:\/\//
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Button, Icon, Input } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
-import connected from '../../../state/setup/connect'
+import { connect } from 'react-redux' 
 import { Page, Content, Form, Row } from './styles'
 import * as registerActions from '../../../state/processes/register/actions'
-import { selector as users } from '../../../state/entities/users/reducers'
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class CreateAccount extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if(!this.props.users.active.userHandle && nextProps.users.active.userHandle) {
+    if(!this.props.login.userHandle && nextProps.login.userHandle) {
       this.setState({ registered: true })
     }
   }
@@ -70,4 +69,10 @@ class CreateAccount extends Component {
   }
 }
 
-export default (connected([users], [registerActions])(CreateAccount))
+const mapStateToProps = state => {
+  return {
+    login: state.loginpage
+  }
+}
+
+export default connect(mapStateToProps, [registerActions])(CreateAccount)

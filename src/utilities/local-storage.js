@@ -1,6 +1,6 @@
 // TODO: move this to an env variable
 const config = {
-  authLocalStorageKey: 'project-starter-dev-token'
+  authLocalStorageKey: 'project-jobsearch-dev-token'
 }
 
 const localStorage = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Page } from './styles'
 // import * as gamesActions from '../../../../state/processes/games/actions'
-import connected from '../../../../state/setup/connect'
+import { connect } from 'react-redux'
 // import { selector as games } from '../../../../state/entities/games/reducer'
 
 class JobTracker extends Component {
@@ -20,4 +20,4 @@ class JobTracker extends Component {
   }
 }
 
-export default connected([],[])(JobTracker)
+export default connect([],[])(JobTracker)

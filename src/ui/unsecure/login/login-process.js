@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as loginActions from './actions'
-import connected from '../../../setup/connect'
+import { connect } from 'react-redux'
 
 export const loginWrapper = WrappedComponent => {
   class LoginProcess extends Component {
@@ -11,6 +11,6 @@ export const loginWrapper = WrappedComponent => {
       return <WrappedComponent login={this.handleClick} {...this.props} />
     }
   }
-  return connected ([], [loginActions])(LoginProcess)
+  return connect([], [loginActions])(LoginProcess)
 }
 export default loginWrapper

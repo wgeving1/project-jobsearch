@@ -1,7 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import * as api from './api'
-import TYPES from './types'
 import LocalStorage from '../../../../utilities/local-storage'
+
 
 export const name = 'loginActions'
 

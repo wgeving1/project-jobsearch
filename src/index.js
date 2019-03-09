@@ -1,13 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
+import appReducer from './state/reducers'
 import App from './ui/index'
-import configureStore from './state/setup/configureStore'
 import * as serviceWorker from './ui/serviceWorker'
 
-const store = configureStore()
+const store = createStore(appReducer)
 
 const renderApp = () =>
   render(

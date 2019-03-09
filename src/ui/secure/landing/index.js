@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { AutoLoginOrRedirect } from '../../../state/processes/auth/login'
 import { Page, Sidenav } from './styles'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import JobTracker from './jobtracker'
@@ -34,4 +33,4 @@ class LandingPage extends Component {
     )
   }
 }
-export default AutoLoginOrRedirect(LandingPage)
+export default LandingPage

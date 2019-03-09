@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import * as process from './process
-import connected from '../../../state/setup/connect'
+import { connect } from 'react-redux'
 import { Page, Content, Title, Description } from './styles'
 
 class Reset extends Component {
@@ -41,4 +40,4 @@ class Reset extends Component {
   }
 }
 
-export default withRouter(connected([], [])(Reset))
+export default withRouter(connect([], [])(Reset))

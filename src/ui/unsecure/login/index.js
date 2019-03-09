@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { Button, Icon, ButtonContent, Input } from 'semantic-ui-react'
 import { Page, Content, Title, Description, Form } from './styles'
-import { Login, AutoLoginOrRedirect } from '../../../state/processes/auth/login'
+import { verifyUserRequest } from '../../../../../react-redux-template/web/src/pages/login/actions';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class LoginPage extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { email, password } = this.state
-    this.props.login(email, password)
+    this.props.loginUser(email, password)
   }
   render() {
     return (
@@ -51,4 +52,18 @@ class LoginPage extends Component {
   }
 }
 
-export default Login(AutoLoginOrRedirect(LoginPage))
+const mapStateToProps = state => {
+  return {
+    login: state.loginpage
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: (email, password) => {
+      dispatch(verifyUserRequest(email, password))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)

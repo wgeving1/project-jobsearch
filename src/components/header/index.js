@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
-
-import connected from '../../state/setup/connect'
-import { selector as users } from '../../state/entities/users/reducers'
+import { connect } from 'react-redux'
 import UserLinks from './user-links'
 import HeaderDefaultLinks from './nav-links'
 
@@ -13,24 +10,20 @@ import {
   LogoContainer
 } from './styles'
 
-const { object, string } = PropTypes
 
 class Header extends Component {
-  static propTypes = {
-    pathname: string.isRequired,
-    users: object.isRequired
-  }
+  
 
   render() {
 
-    const user = this.props.users.active
+    const user = this.props.login
     const logoLink = user && user.userHandle ? '/landing' : '/'
 
     return (
       <HeaderContainer>
         <Link to={logoLink}>
             <LogoContainer>
-              Intensely Games
+              Tech Jobber
             </LogoContainer>
         </Link>
         <ActiveLink>
@@ -41,4 +34,10 @@ class Header extends Component {
   }
 }
 
-export default withRouter(connected([users], [])(Header))
+const mapStateToProps = state => {
+  return {
+    login: state.loginpage
+  }
+} 
+
+export default withRouter(connect(mapStateToProps, [])(Header))

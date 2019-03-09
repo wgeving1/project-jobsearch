@@ -3,10 +3,10 @@ import jwt from 'jsonwebtoken'
 import { Redirect, withRouter } from 'react-router-dom'
 
 import * as loginActions from './actions'
-import connected from '../../../setup/connect'
+import { connect } from 'react-redux'
 import { selector as users } from '../../../../state/entities/users/reducers'
 import authToken from '../../../../utilities/local-storage'
-import { unsecuredRoutes } from '../../../../ui'
+import { unsecuredRoutes } from '../../../../ui/index'
 
 const AutoLoginOrRedirect = WrappedComponent => {
   class JWTVerify extends Component {
@@ -25,7 +25,7 @@ const AutoLoginOrRedirect = WrappedComponent => {
         const currentTime = (new Date().getTime()) / 1000
         if(decoded.exp < currentTime) {
           authToken.remove()
-          this.setState({ fetching: false,loading: true })
+          this.setState({ fetching: false, loading: true })
         } else {
           this.props.loginActions.fetchUserByJWT()
         }
@@ -59,6 +59,6 @@ const AutoLoginOrRedirect = WrappedComponent => {
       } 
     }
   }
-  return withRouter(connected([users], [loginActions])(JWTVerify))
+  return withRouter(connect([users], [loginActions])(JWTVerify))
 }
 export default AutoLoginOrRedirect
