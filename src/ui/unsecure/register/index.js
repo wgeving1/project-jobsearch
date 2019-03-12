@@ -3,7 +3,7 @@ import { Button, Icon, Input } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux' 
 import { Page, Content, Form, Row } from './styles'
-import * as registerActions from '../../../state/processes/register/actions'
+import { registerUser } from './actions'
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class CreateAccount extends Component {
       confirmedPassword: '',
       email: '',
       registered: false
+      // hidden: true
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -29,9 +30,11 @@ class CreateAccount extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const { registered, ...params } = this.state
-    this.props.registerActions.registerUser({ ...params })
+    this.props.registerNewUser({ ...params })
   }
-
+  // toggleShow = () => {
+  //   this.setState({ hidden: !this.state.hidden })
+  // }
   render() {
     if(this.state.registered) {
       return <Redirect to={{ pathname: '/landing', state: { from: this.props.location } }} />
@@ -62,6 +65,8 @@ class CreateAccount extends Component {
                 <Icon name="caret square right"/>
               </Button.Content>
             </Button>
+            {/* <input type={this.state.hidden ? 'password' : 'text'} />
+            <button onClick={ this.toggleShow}>Show / Hide</button> */}
           </Form>
         </Content>
       </Page>
@@ -74,5 +79,12 @@ const mapStateToProps = state => {
     login: state.loginpage
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    registerNewUser: (...params) => {
+      dispatch(registerUser(...params))
+    }
+  }
+}
 
-export default connect(mapStateToProps, [registerActions])(CreateAccount)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount)

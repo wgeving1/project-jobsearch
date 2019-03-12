@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import * as api from './api'
-import LocalStorage from '../../../../utilities/local-storage'
+import LocalStorage from '../../../utilities/local-storage'
 import TYPES from './types'
 
 export const name = 'logoutActions'

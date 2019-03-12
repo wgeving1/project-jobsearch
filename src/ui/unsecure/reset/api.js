@@ -1,7 +1,7 @@
 import * as axiosWrapper from '../../../utilities/axios-utils'
 
-export const recover = {
-  formatUrl: () => `/auth/recover`,
+export const resetPassword = {
+  formatUrl: () => `/auth/reset`,
   request: (url, body) => axiosWrapper.post(url, body),
-  serialize: (email, password) => ({ email, password })
+  serialize: (email) => ({ email })
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button, Icon, ButtonContent, Input } from 'semantic-ui-react'
 import { Page, Content, Title, Description, Form } from './styles'
-import { verifyUserRequest } from '../../../../../react-redux-template/web/src/pages/login/actions';
+import { fetch } from './actions'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -61,7 +61,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     loginUser: (email, password) => {
-      dispatch(verifyUserRequest(email, password))
+      dispatch(fetch(email, password))
     }
   }
 }

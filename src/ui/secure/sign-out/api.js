@@ -1,4 +1,4 @@
-import * as axiosWrapper from '../../../../utilities/axios-utils'
+import * as axiosWrapper from '../../../utilities/axios-utils'
 
 export const logout = {
   formatUrl: () => `/auth/logout`,

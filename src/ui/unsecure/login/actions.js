@@ -1,5 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import LocalStorage from '../../../../utilities/local-storage'
+import * as api from './api'
+import TYPES from './types'
+import LocalStorage from '../../../utilities/local-storage'
 
 
 export const name = 'loginActions'
@@ -29,7 +31,7 @@ export function fetchSuccess(data) {
     admin: data.admin
   }
 }
-export function fetchUSerByJWT() {
+export function fetchUserByJWT() {
   return {
     type: TYPES.FETCH_USER_BY_JWT
   }

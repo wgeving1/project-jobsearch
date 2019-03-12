@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Button, Icon, Input, ButtonContent } from 'semantic-ui-react'
-import * as recoveryActions from './actions'
+import { connect } from 'react-redux'
+import { recover } from './actions'
 import { Content, Description, Title, Error, Form, Page } from './styles'
 
 class Recover extends Component {
@@ -22,13 +23,13 @@ class Recover extends Component {
       return 
     }
     this.setState({ error: false })
-    this.props.recoverProcess(email)
+    this.props.recoverUser(email)
   }
   render() {
     return (
       <Page>
         <Content>
-          <Title>Forgot Password</Title>
+          <Title>Forgot Password?</Title>
           <Description>We'll Send You A Recovery Email</Description>
           <Form>
             <Input icon="mail square" iconPosition="left" size="big" placeholder="Your Email" type="text"
@@ -46,4 +47,18 @@ class Recover extends Component {
     )
   }
 }
-export default recoverProcess(Recover)
+  const mapStateToProps = state => {
+    return {
+      recover: state.recovery
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      recoverUser: (email) => {
+        dispatch(recover(email))
+      }
+    }
+  }  
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recover)

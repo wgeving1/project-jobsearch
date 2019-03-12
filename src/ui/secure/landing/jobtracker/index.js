@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Page } from './styles'
-// import * as gamesActions from '../../../../state/processes/games/actions'
 import { connect } from 'react-redux'
-// import { selector as games } from '../../../../state/entities/games/reducer'
 
 class JobTracker extends Component {
   componentDidMount() {

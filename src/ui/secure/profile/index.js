@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { AutoLoginOrRedirect } from '../.././../state/processes/auth/login'
 
 import { Page } from './styles'
 
@@ -13,4 +12,4 @@ class ProfilePage extends Component {
   }
 }
 
-export default AutoLoginOrRedirect(ProfilePage)
+export default ProfilePage
