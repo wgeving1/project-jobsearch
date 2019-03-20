@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { Button, Icon, ButtonContent, Input } from 'semantic-ui-react'
 import { Page, Content, Title, Description, Form } from './styles'
-import { fetch } from './actions'
+import { Login, AutoLoginOrRedirect } from './modules'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class LoginPage extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { email, password } = this.state
-    this.props.loginUser(email, password)
+    this.props.login(email, password)
   }
   render() {
     return (
@@ -52,18 +51,4 @@ class LoginPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    login: state.loginpage
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    loginUser: (email, password) => {
-      dispatch(fetch(email, password))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)
+export default Login(AutoLoginOrRedirect(LoginPage))

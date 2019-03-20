@@ -31,8 +31,8 @@ export default function (state = initialState, action = {}) {
 }
 
 export const selector = {
-  name: 'users', 
+  name: 'login', 
   select(state) {
-    return state.users
+    return state.login
   }
 }

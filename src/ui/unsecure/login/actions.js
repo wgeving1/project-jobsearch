@@ -37,9 +37,9 @@ export function fetchUserByJWT() {
   }
 }
 export function* executeFetchUserByJWT() {
-  const url = api.fetchByJWT.formatUrl()
+  const url = api.fetchUserByJWT.formatUrl()
   try {
-    const res = yield call(api.fetchByJWT.request, url)
+    const res = yield call(api.fetchUserByJWT.request, url)
     yield put(fetchSuccess(res.data))
   } catch (res) {
     console.error('Request failed with', res.error)

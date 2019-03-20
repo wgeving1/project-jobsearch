@@ -5,7 +5,7 @@ import LocalStorage from '../../../utilities/local-storage'
 
 export const name = 'registerActions'
 
-export function registerUser({ email, 
+export function registerNewUser({ email, 
   username, 
   password, 
   confirmedPassword, 
@@ -29,8 +29,8 @@ export function* executeRegisterUser({ email,
   confirmedPassword, 
   firstName, 
   surname }) {
-  const url = api.registerUser.formatUrl()
-  const body = api.registerUser.serialize(email,
+  const url = api.registerNewUser.formatUrl()
+  const body = api.registerNewUser.serialize(email,
     username,
     password, 
     confirmedPassword,
@@ -38,7 +38,7 @@ export function* executeRegisterUser({ email,
     surname)
   try {
     LocalStorage.remove()
-    const res = yield call(api.registerUser.request, url, body)
+    const res = yield call(api.registerNewUser.request, url, body)
     LocalStorage.set(res.data.token)
     yield put(registerUserSuccess(res.data))
   } catch (err) {

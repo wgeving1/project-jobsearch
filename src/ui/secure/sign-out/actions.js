@@ -22,7 +22,7 @@ export function* executeLogoutUser() {
   }
 }
 
-export function logoutUserSuccess(data) {
+export function logoutUserSuccess() {
   return {
     type: TYPES.LOGOUT_USER_SUCCESS
   }

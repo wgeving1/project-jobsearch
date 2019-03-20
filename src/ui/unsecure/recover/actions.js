@@ -1,9 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import * as api from './api'
 import TYPES from './types'
+
 export const name = 'recoveryActions'
 
-export function recover(email) {
+export function recoverPass(email) {
   return {
     type: TYPES.RECOVER_USER_PASSWORD_REQUEST, 
     email

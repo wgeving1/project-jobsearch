@@ -23,7 +23,7 @@ class Header extends Component {
       <HeaderContainer>
         <Link to={logoLink}>
             <LogoContainer>
-              Tech Jobber
+              Tech Jobber Home
             </LogoContainer>
         </Link>
         <ActiveLink>

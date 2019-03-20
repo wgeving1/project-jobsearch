@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import jwt from 'jsonwebtoken'
 import { Redirect, withRouter } from 'react-router-dom'
-
-import * as loginActions from './actions'
+import { fetchUserByJWT } from './actions'
 import { connect } from 'react-redux'
-import { selector as users } from '../../../../state/entities/users/reducers'
-import authToken from '../../../../utilities/local-storage'
-import { unsecuredRoutes } from '../../../../ui/index'
+import authToken from '../../../utilities/local-storage'
+import { unsecuredRoutes } from '../../index'
 
-const AutoLoginOrRedirect = WrappedComponent => {
+const AutoLoginOrRedirectProcess = WrappedComponent => {
   class JWTVerify extends Component {
     constructor(props) {
       super(props)
@@ -19,7 +17,7 @@ const AutoLoginOrRedirect = WrappedComponent => {
     }
     componentDidMount() {
       const token = authToken.get()
-      const user = this.props.users.active
+      const user = this.props.login
       if(token && !user.userHandle) {
         const decoded = jwt.decode(token)
         const currentTime = (new Date().getTime()) / 1000
@@ -27,24 +25,24 @@ const AutoLoginOrRedirect = WrappedComponent => {
           authToken.remove()
           this.setState({ fetching: false, loading: true })
         } else {
-          this.props.loginActions.fetchUserByJWT()
+          this.props.fetchUserByJWT()
         }
       } else {
         this.setState({ fetching: false, loading: true })
       }  
     }
     componentWillReceiveProps(nextProps) {
-      if(this.state.fetching && !nextProps.users.loading) {
+      if(this.state.fetching && !nextProps.user.loading) {
         this.setState({ fetching: false, loading: true })
       }
     }
     render() {
-      const user = this.props.users.active
 
       if (this.state.loading) {
+        const user = this.props.login
         const { pathname } = this.props.location
         const unsecured = unsecuredRoutes.indexOf(pathname) > -1
-        const { history, location, loginActions, match, users, staticContext, ...originalProps } = this.props
+        const { history, location, fetchUserByJWT, match, staticContext, ...originalProps } = this.props
         if(typeof user.userHandle === 'undefined') {
           if(unsecured) { return <WrappedComponent {...originalProps} /> }
           
@@ -59,6 +57,20 @@ const AutoLoginOrRedirect = WrappedComponent => {
       } 
     }
   }
-  return withRouter(connect([users], [loginActions])(JWTVerify))
+  return withRouter(connect(mapStateToProps, mapDispatchToProps)(JWTVerify))
 }
-export default AutoLoginOrRedirect
+
+const mapStateToProps = state => {
+  return {
+    login: state.loginpage
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUserByJWT: () => {
+      dispatch(fetchUserByJWT())
+    }
+  }
+}
+export default AutoLoginOrRedirectProcess

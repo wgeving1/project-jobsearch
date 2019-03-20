@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Button, Icon, Input, ButtonContent } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { recover } from './actions'
+import { recoverPass } from './actions'
 import { Content, Description, Title, Error, Form, Page } from './styles'
 
 class Recover extends Component {
@@ -56,7 +56,7 @@ class Recover extends Component {
   const mapDispatchToProps = dispatch => {
     return {
       recoverUser: (email) => {
-        dispatch(recover(email))
+        dispatch(recoverPass(email))
       }
     }
   }  

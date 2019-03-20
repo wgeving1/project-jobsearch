@@ -5,16 +5,7 @@ import { AppContainer, LeftSide, RightSide } from './styles.js'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-// import LoginProcess from './login-process'
-// import JWTVerify from './jwt-verification'
 
-// export const Login = LoginProcess
-// export const AutoLoginOrRedirect = JWTVerify
-
-// export default {
-//   Login, 
-//   AutoLoginOrRedirect
-// }
 
 // Secure Pages
 import Landing from './secure/landing'

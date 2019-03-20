@@ -5,7 +5,7 @@ export const fetch = {
   request: (url, body) => axiosWrapper.post(url, body), 
   serialize: (email, password) => ({ email, password })
 }
-export const fetchByJWT = {
+export const fetchUserByJWT = {
   formatUrl: () => `/auth/jwt/login`,
   request: (url) => axiosWrapper.get(url)
 }

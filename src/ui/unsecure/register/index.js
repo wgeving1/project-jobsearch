@@ -3,7 +3,7 @@ import { Button, Icon, Input } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux' 
 import { Page, Content, Form, Row } from './styles'
-import { registerUser } from './actions'
+import { registerNewUser } from './actions'
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -16,11 +16,10 @@ class CreateAccount extends Component {
       confirmedPassword: '',
       email: '',
       registered: false
-      // hidden: true
     }
   }
   componentWillReceiveProps(nextProps) {
-    if(!this.props.login.userHandle && nextProps.login.userHandle) {
+    if(!this.props.register.userHandle && nextProps.register.userHandle) {
       this.setState({ registered: true })
     }
   }
@@ -32,9 +31,7 @@ class CreateAccount extends Component {
     const { registered, ...params } = this.state
     this.props.registerNewUser({ ...params })
   }
-  // toggleShow = () => {
-  //   this.setState({ hidden: !this.state.hidden })
-  // }
+  
   render() {
     if(this.state.registered) {
       return <Redirect to={{ pathname: '/landing', state: { from: this.props.location } }} />
@@ -54,10 +51,10 @@ class CreateAccount extends Component {
               <Input icon="envelope square" placeholder="Email" type="text" onChange={this.handleInput('email')} />
             </Row>
             <Row>
-              <Input icon="lock" placeholder="Password" type="text" onChange={this.handleInput('password')} />
+              <Input icon="lock" placeholder="Password" type="password" onChange={this.handleInput('password')} />
             </Row>
             <Row>
-              <Input icon="lock" placeholder="Confirm Password" type="text" onChange={this.handleInput('confirmedPassword')} />
+              <Input icon="lock" placeholder="Confirm Password" type="password" onChange={this.handleInput('confirmedPassword')} />
             </Row>
             <Button type="submit" animated color="olive">
               <Button.Content visible>Create Account</Button.Content>
@@ -65,8 +62,6 @@ class CreateAccount extends Component {
                 <Icon name="caret square right"/>
               </Button.Content>
             </Button>
-            {/* <input type={this.state.hidden ? 'password' : 'text'} />
-            <button onClick={ this.toggleShow}>Show / Hide</button> */}
           </Form>
         </Content>
       </Page>
@@ -76,13 +71,13 @@ class CreateAccount extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.loginpage
+    register: state.registerpage
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     registerNewUser: (...params) => {
-      dispatch(registerUser(...params))
+      dispatch(registerNewUser(...params))
     }
   }
 }
