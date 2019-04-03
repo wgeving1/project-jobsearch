@@ -47,13 +47,13 @@ class Recover extends Component {
     )
   }
 }
-  const mapStateToProps = state => {
+  const mapStateToProps = (state) => {
     return {
       recover: state.recovery
     }
   }
   
-  const mapDispatchToProps = dispatch => {
+  const mapDispatchToProps = (dispatch) => {
     return {
       recoverUser: (email) => {
         dispatch(recoverPass(email))

@@ -1,6 +1,6 @@
 import * as axiosWrapper from '../../../utilities/axios-utils'
 
-export const registerUser = {
+export const registerNewUser = {
   formatUrl: () => `/users/register`, 
   request: (url, body) => axiosWrapper.post(url, body),
   serialize: (email, 

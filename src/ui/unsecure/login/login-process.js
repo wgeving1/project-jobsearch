@@ -13,7 +13,7 @@ export const loginWrapper = WrappedComponent => {
   }
   return connect(mapDispatchToProps)(LoginProcess)
 }
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetch: (email, password) => {
       dispatch(fetch(email, password))

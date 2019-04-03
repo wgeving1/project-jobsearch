@@ -24,6 +24,7 @@ class LoginPage extends Component {
     event.preventDefault()
     const { email, password } = this.state
     this.props.login(email, password)
+    console.log("Submit", this.props.login)
   }
   render() {
     return (

@@ -30,7 +30,7 @@ class HeaderNavLinks extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     login: state.loginpage
   }

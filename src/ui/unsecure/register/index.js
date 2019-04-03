@@ -30,6 +30,7 @@ class CreateAccount extends Component {
     e.preventDefault()
     const { registered, ...params } = this.state
     this.props.registerNewUser({ ...params })
+    console.log(this.state)
   }
   
   render() {
@@ -69,12 +70,13 @@ class CreateAccount extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     register: state.registerpage
   }
 }
-const mapDispatchToProps = dispatch => {
+
+const mapDispatchToProps = (dispatch) => {
   return {
     registerNewUser: (...params) => {
       dispatch(registerNewUser(...params))

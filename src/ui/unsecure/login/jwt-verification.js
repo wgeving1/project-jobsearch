@@ -60,13 +60,13 @@ const AutoLoginOrRedirectProcess = WrappedComponent => {
   return withRouter(connect(mapStateToProps, mapDispatchToProps)(JWTVerify))
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     login: state.loginpage
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchUserByJWT: () => {
       dispatch(fetchUserByJWT())

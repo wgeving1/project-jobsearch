@@ -28,8 +28,8 @@ export const Content = styled('div')`
   }
 `
 export const Title = styled('div')`
-  font-size: 12px;
-  margin-bottom: 40px;
+  font-size: 28px;
+  margin-bottom: 20px;
 `
 export const Description = styled('div')`
   font-size: 12px;
